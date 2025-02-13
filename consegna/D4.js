@@ -49,9 +49,7 @@ crazyDiff(124) //(124 - 19) *3 = 315
 */
 
 const boundary = function (n) {
-  if (n > 19 && n <= 100) {
-    return console.log(true)
-  } else if (n == 400) {
+  if ((n > 19 && n <= 100) || n === 400) {
     return console.log(true)
   } else {
     return console.log(false)
@@ -69,18 +67,21 @@ boundary(50) //true
  ritornare la stringa originale senza alterarla.
 */
 
-const epify = function (stringa) {
-  const word = stringa.split(" ")
-  if (word == "EPICODE") {
-    return console.log(stringa)
+const epify = function (parola) {
+  const word = "EPICODE"
+  if (
+    parola.slice(0, 7) === word
+    // oppure si poteva usare anche
+    //parola.startsWith(word)
+  ) {
+    return console.log(parola)
   } else {
-    return console.log("EPICODE" + stringa)
+    return console.log(word + parola)
   }
 }
 
-epify("Ciao ")
 epify("EPICODE")
-epify("epicode non ")
+epify(" non è epicode ")
 
 /* ESERCIZIO 6
  Scrivi una funzione di nome "check3and7" che accetta un numero positivo come parametro. La funzione deve controllare che il parametro sia un multiplo
@@ -90,11 +91,11 @@ epify("epicode non ")
 const check3and7 = function (number) {
   const multiplo3 = number % 3
   const multiplo7 = number % 7
-  if (multiplo3 == 0 && multiplo7 == 0) {
+  if (multiplo3 === 0 && multiplo7 === 0) {
     return console.log(number + " è divisibile per sia per 3 che per 7")
-  } else if (multiplo3 == 0) {
+  } else if (multiplo3 === 0) {
     return console.log(number + " è divisibile per 3")
-  } else if (multiplo7 == 0) {
+  } else if (multiplo7 === 0) {
     return console.log(number + " è divisibile per 7")
   } else {
     console.log(number + " non è divisibile ne per 3 ne per 7")
@@ -109,9 +110,11 @@ check3and7(6)
 */
 
 const reverseString = function (parola) {
-  const parolaAlContrario = parola.split("")
-  parolaAlContrario.reverse()
-  console.log(parolaAlContrario.join(""))
+  //   const parolaAlContrario = parola.split("")
+  //   parolaAlContrario.reverse()
+  //   console.log(parolaAlContrario.join(""))
+  const parolaAlContrario = parola.split("").reverse().join("")
+  console.log(parolaAlContrario)
 }
 
 reverseString("Chiara")
@@ -147,12 +150,3 @@ cutString("polpetta")
 /* ESERCIZIO 10
  Scrivi una funzione di nome "giveMeRandom", che accetta come parametro un numero n e ritorna un'array contenente n numeri casuali inclusi tra 0 e 10.
 */
-let numbers = []
-
-const giveMeRandom = function (n) {
-  for (i = 0; i <= n; i++) {
-    console.log(((numbers = numbers), Math.floor(Math.random() * 10)))
-  }
-}
-
-giveMeRandom(2)
